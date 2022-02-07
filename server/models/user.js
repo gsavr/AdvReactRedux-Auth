@@ -52,6 +52,21 @@ userSchema.pre("save", function (next) {
   });
 }); */
 
+//add method to user model to do password comparison when loggin in (passport.js)
+userSchema.methods.comparePassword = function (candidatePassword, callback) {
+  bcrypt.compare(
+    String(candidatePassword),
+    String(this.password),
+    function (err, isMatch) {
+      if (err) {
+        return callback(err);
+      }
+
+      callback(null, isMatch);
+    }
+  );
+};
+
 //Create the model class
 const ModelClass = mongoose.model("user", userSchema);
 

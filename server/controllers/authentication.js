@@ -1,11 +1,17 @@
-const User = require("../models/user");
 const jwt = require("jwt-simple");
-const { secretString } = require("../config/keys");
+const User = require("../models/user");
+const { jwtSecret } = require("../config/keys");
 
 const tokenForUser = (user) => {
-  const timeStamp = newDate().getTime();
-  //iat = "issued at time"
-  return jwt.encode({ sub: user.id, iat: timeStamp }, secretString);
+  const timeStamp = new Date().getTime();
+  //iat = "issued at time" //sub is a convention for subject - who is this user
+  return jwt.encode({ sub: user.id, iat: timeStamp }, jwtSecret);
+};
+
+exports.signin = (req, res, next) => {
+  //user has already had email and pw auth'd
+  //we just need to give them a token
+  res.send({ token: tokenForUser(req.user) });
 };
 
 exports.signup = (req, res, next) => {
@@ -19,7 +25,7 @@ exports.signup = (req, res, next) => {
   if (!name || !email || !password) {
     return res
       .status(422)
-      .send({ error: "You must provide a name, email, and password" });
+      .send({ error: "You must provide a name, valid email, and password" });
   }
 
   //See if a user with given email exists
@@ -42,7 +48,8 @@ exports.signup = (req, res, next) => {
         return next(err);
       }
       //Respond to request that user was created
-      res.json({ success: true });
+      //res.json({ success: true }); - good for testing in postman
+      res.json({ token: tokenForUser(user) });
     });
   });
 };
