@@ -1,4 +1,6 @@
-# AdvReactRedux-Auth
+# AdvReactRedux-Auth - Simple local signup/signin with db
+
+https://damp-mountain-98938.herokuapp.com/
 
 ## Tech Used - Server Side
 
@@ -20,6 +22,7 @@
 
 1. React-router-dom v6
 2. Redux
-3. Hooks
-4. FORM()()()
-5. axios
+3. Redux-thunk
+4. Hooks
+5. Redux-form
+6. axios
