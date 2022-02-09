@@ -5,34 +5,20 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({ handleSubmit, signup, authErrorMessage }) => {
+const Signin = ({ handleSubmit, signin, authErrorMessage }) => {
   const navigate = useNavigate();
 
   const onSubmit = (formProps) => {
     //console.log(formProps);
-    signup(formProps, () => {
+    signin(formProps, () => {
       navigate("/feature");
     });
   };
 
   return (
     <div>
-      <div>Sign Up to Access Auth</div>
+      <div>Sign In to Access Auth</div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
-          <fieldset>
-            <label for="InputName" className="form-label">
-              Name
-            </label>
-            <Field
-              name="name"
-              component="input"
-              type="text"
-              //Bootstrap attribute
-              className="form-control"
-            />
-          </fieldset>
-        </div>
         <div className="mb-3">
           <fieldset>
             <label for="InputEmail" className="form-label">
@@ -65,7 +51,7 @@ const Signup = ({ handleSubmit, signup, authErrorMessage }) => {
         >
           {authErrorMessage}
         </div>
-        <button className="btn btn-primary">Sign Up</button>
+        <button className="btn btn-primary">Sign In</button>
       </form>
     </div>
   );
@@ -78,5 +64,5 @@ const mapStateToProps = ({ auth }) => {
 //compose lets multiple HigherOrderComponents be used with this component
 export default compose(
   connect(mapStateToProps, actions),
-  reduxForm({ form: "signup" })
-)(Signup);
+  reduxForm({ form: "signin" })
+)(Signin);

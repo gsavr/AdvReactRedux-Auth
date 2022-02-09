@@ -11,7 +11,7 @@ module.exports = (app) => {
     res.send(["hello", "there", "you"]);
   });
 
-  app.post("/signin", requireSignin, Authentication.signin);
+  app.post("/api/signin", requireSignin, Authentication.signin);
 
-  app.post("/signup", Authentication.signup);
+  app.post("/api/signup", Authentication.signup);
 };
