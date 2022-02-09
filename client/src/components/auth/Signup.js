@@ -17,7 +17,7 @@ const Signup = ({ handleSubmit, signup, authErrorMessage }) => {
 
   return (
     <div>
-      <div>Sign Up to Access Auth</div>
+      <div>Register to Access Auth</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <fieldset>
@@ -65,7 +65,7 @@ const Signup = ({ handleSubmit, signup, authErrorMessage }) => {
         >
           {authErrorMessage}
         </div>
-        <button className="btn btn-primary">Sign Up</button>
+        <button className="btn btn-primary">Register</button>
       </form>
     </div>
   );

@@ -1,20 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Dropdown } from "react-bootstrap";
 import "../css/header.css";
 
 const Header = ({ authenticated }) => {
   const renderHeaderLinks = () => {
     if (!authenticated) {
       return (
-        <div className="header">
-          <Link to="/signup" className="nav-link">
-            Signup
-          </Link>
-          <Link to="/signin" className="nav-link">
-            Sign In
-          </Link>
-        </div>
+        <Dropdown>
+          <Dropdown.Toggle id="dropdown" as={Link} to="#" className="nav-link">
+            Login
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu variant="light">
+            <Dropdown.Item as={Link} to="/signin" className="nav-link">
+              Sign In
+            </Dropdown.Item>
+            {/* <Dropdown.Divider /> */}
+            <Dropdown.Item as={Link} to="/signup" className="nav-link">
+              Register
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       );
     }
     if (authenticated) {

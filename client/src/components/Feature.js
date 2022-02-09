@@ -12,7 +12,7 @@ const Feature = () => {
     }, 3200);
   });
 
-  console.log(show);
+  //console.log(show);
 
   const renderSpinner = () => {
     if (show) {
