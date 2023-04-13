@@ -1,6 +1,6 @@
 # AdvReactRedux-Auth - Simple local signup/signin with db
 
-https://damp-mountain-98938.herokuapp.com/
+[Demo](https://react-redux-auth.herokuapp.com/)
 
 ## Tech Used - Server Side
 
